@@ -1,9 +1,20 @@
 from fastapi import FastAPI
-from db.db import create_tables, get_db
-from Task import router as task_router
+from app.routers.Task import router as task_router
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 
-create_tables()
 
 app.include_router(task_router)
+origins = [
+    "http://localhost",
+    "http://localhost:8080",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)

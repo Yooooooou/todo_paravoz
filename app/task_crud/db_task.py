@@ -2,8 +2,8 @@ from typing import Annotated
 
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Depends
-from db.models import DbTask
-from schemas import Task, TaskUpdate
+from app.models.task_model import DbTask
+from app.schemas.task_schemas import Task, TaskUpdate
 
 
 def create_task(db: Session, request: Task):

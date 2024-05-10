@@ -3,9 +3,9 @@ from typing import Annotated
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from db.db import get_db
-from schemas import Task, TaskUpdate
-from db.db_task import create_task, get_task, get_all_tasks, delete_task, delete_all_tasks, update_task
+from app.dependencies.db.db import get_db
+from app.schemas.task_schemas import Task, TaskUpdate
+from app.task_crud.db_task import create_task, get_task, get_all_tasks, delete_task, delete_all_tasks, update_task
 
 router = APIRouter(
     prefix='/tasks',
